@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="form-group">
+      <label for="levelOfStudy">Level of Study:</label>
+      <select [(ngModel)]="levelOfStudy" id="levelOfStudy" class="form-control">
+        <option value="Masters">Master's Degree</option>
+        <option value="Bachelor">Bachelor's Degree</option>
+        <option value="Diplom">Diplom Degree</option>
+
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="program">Program:</label>
+      <select [(ngModel)]="program" id="program" class="form-control">
+        <option value="CS">Computer Science</option>
+        <option value="SE">Softare Engineering</option>
+        <option value="IT">Information Technology</option>
+
+
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="faculty">Faculty/Division:</label>
+      <select [(ngModel)]="faculty" id="faculty" class="form-control">
+        <option value="Info">Information</option>
+      </select>
+    </div>
+    <button class="explore-btn">Explore</button>
+    <button class="sign-out-btn" (click)="signOut()">Sign Out</button>
+  </div>
+  

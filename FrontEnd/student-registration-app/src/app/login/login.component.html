@@ -1,0 +1,64 @@
+<div class="wrapper">
+ <div class="container" id="container">
+	<div class="form-container sign-up-container">
+    <form (ngSubmit)="register(email, password, firstName, lastName, birthdate, photo)" #registerForm="ngForm">
+      <h1>Create Account</h1>
+    <input type="text" placeholder="First Name" [(ngModel)]="firstName" name="firstName" required />
+    <div *ngIf="registerForm.submitted && !registerForm.form.controls['firstName'].valid" class="error-message">
+      First Name is required.
+    </div>
+    <input type="text" placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required />
+    <div *ngIf="registerForm.submitted && !registerForm.form.controls['lastName'].valid" class="error-message">
+      Last Name is required.
+    </div>
+    <input type="email" name="email" placeholder="Email" [(ngModel)]="email" #emailField="ngModel" required email>
+    <div *ngIf="emailField.invalid && emailField.touched" class="error-message">
+      Please enter a valid email.
+    </div>
+    
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+    <div *ngIf="registerForm.submitted && !registerForm.form.controls['password'].valid" class="error-message">
+      Password is required.
+    </div>
+    <input type="password" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="confirmPassword" required>
+    <div *ngIf="!passwordsMatch()" class="error-message">Passwords do not match</div>
+    <input type="date" placeholder="Birthdate" name="birthdate" [(ngModel)]="birthdate" required />
+    <div *ngIf="registerForm.submitted && !registerForm.form.controls['birthdate'].valid" class="error-message">
+      Birthdate is required.
+    </div>
+    <input type="file" (change)="onFileChange($event)" name="photo" required />
+
+    <button type="submit">Sign Up</button>
+    <p>{{ message }}</p> 
+  </form>
+</div>
+  
+	<div class="form-container sign-in-container">
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+			<h1>Sign in</h1>
+
+      <input type="email" id="login-email" placeholder="Email" [(ngModel)]="email" name="email" required />
+      <input type="password" id="login-password" placeholder="Password" [(ngModel)]="password" name="password" required />
+      <button type="submit">Sign In</button>
+      <p>{{ message }}</p> 
+      <div *ngIf="showSuccessPopup" class="success-popup">
+        Login Successful
+      </div>
+      
+    </form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Student!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
